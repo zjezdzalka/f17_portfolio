@@ -1,5 +1,9 @@
 *{
     margin: 0;
+    --pastel-purple: rgb(213, 163, 255);
+}
+#background{
+    background-color: var(--pastel-purple);    
 }
 .footer{
     border-radius: 15vw;
