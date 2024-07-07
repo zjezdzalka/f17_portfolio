@@ -113,14 +113,14 @@
     z-index: -1;
 }
 
-#section-abtme{
+#section-abtme, #section-projects, #section-contact{
     width: auto;
     padding: 20px;
     position: relative; 
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
 }
-#section-abtme>h2{
+#section-abtme>h2, #section-projects>h2, #section-contact>h2{
     margin: 0 0 20px 0;
 }
 
