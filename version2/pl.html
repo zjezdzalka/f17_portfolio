@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <!-- Meta Tags -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="rytui's portfolio!!!" />
+    <meta name="author" content="Marek Zjeżdżałka" />
+    <meta http-equiv="refresh" content="900" />
+
+    <!-- Link Tags -->
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/globalStyle.css" />
+
+    <!-- --~-- -->
+
+    <title>rytui's portfolio</title>
+
+    <!-- Loading Screen -->
+
+    <style>
+        #black {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #242f3f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            border: 4px solid #Fff;
+            animation: loader 2s infinite ease;
+        }
+        .loader-inner {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+            background-color: #fff;
+            animation: loader-inner 2s infinite ease-in;
+        }
+        
+        #abtme{
+            opacity: 1;
+        }
+
+        @keyframes loader {
+            0% { transform: rotate(0deg);}
+            25% { transform: rotate(180deg);}
+            50% { transform: rotate(180deg);}
+            75% { transform: rotate(360deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        @keyframes loader-inner {
+            0% { height: 0%;}
+            25% { height: 0%;}
+            50% { height: 100%;}
+            75% { height: 100%;}
+            100% { height: 0%;}
+        }
+
+        @keyframes abtme-loaded {
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Translate to polish -->
+
+    <main id="main">
+        <div id="languages"></div>
+        <header id="main-section-header">
+            <div id="header-text">
+                <h2 class="size-ten raleway-bold">Marek Zjeżdżałka</h2>
+                <h3 class="size-five raleway-light">your C++ programmer</h2>
+                <a href="#section-abtme" id="header-abtme-button" class="raleway-regular size-five">About me</a>
+            </div>
+            <img src="images/me.jpg" alt="Me" id="header-me-picture">
+        </header>
+        <section id="section-info">
+            <div id="section-abtme">
+                <h2 class="raleway-bold size-nine">About me</h2>
+                <p class="raleway-regular size-five">
+                    I'm Marek - a 16-yo Polish C++ programmer, who finds competitive programming, video editing, new coding languages, maths and aviation very interesting! I currently go to the 3rd grade at ZSK in Poznan and actively socially engage in activities such as contests, debates and councils. Soon, I'd love to participate in MUN-styled debates, but also in different types of hackathons (HackYeah, NASA SpaceApps). Right now I know 3 languages: Polish, English and German. But in terms of programming, I know C++, Python, HTML, CSS, JS, SQL and C#. I want to learn Assembler, Java and Lua.
+                </p>
+            </div>
+            <div id="section-projects">
+                <h2 class="raleway-bold size-nine">Projects</h2>
+                <div class="raleway-regular size-five">
+                    <p>Project 1 - </p>
+                    <p>Project 2 - </p>
+                    <p>Project 3 - </p>
+                </div>
+            </div>
+            <div id="section-contact">
+                <h2 class="raleway-bold size-nine">Contact</h2>
+                <p class="raleway-regular size-five">
+                    
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Loading Screen -->
+
+    <div id="black">
+        <span class="loader">
+            <span class="loader-inner"></span>
+        </span>
+    </div>
+
+    <!-- <script>
+        let mousePos = { x: undefined, y: undefined };
+        var height = document.body.clientHeight;
+        var width = document.body.clientWidth;
+        window.addEventListener('mousemove', (event) => {
+            mousePos = { x: event.clientX, y: event.clientY };
+            height2 = ((event.clientY)/height * 100);
+            width2 = ((event.clientX)/width * 100);
+            document.getElementById("background").style.backgroundPositionX = width2 + "%"; 
+            document.getElementById("background").style.backgroundPositionY = height2 + "%";
+        });
+    </script> -->
+
+    <style>
+        #black {
+            -webkit-animation: load-out 2s ease-in-out;
+            animation: load-out 2s ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        @-webkit-keyframes load-out {
+            from {
+                background-color: rgba(0,0,0,1);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            to {
+                background-color: rgba(0,0,0,0);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes load-out {
+            from {
+                background-color: rgba(0,0,0,1);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            to {
+                background-color: rgba(0,0,0,0);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</body>
+</html>
