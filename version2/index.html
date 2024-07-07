@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="rytui's portfolio!!!" />
+    <meta name="author" content="Marek Zjeżdżałka" />
+    <meta http-equiv="refresh" content="900" />
+
+    <!-- Link Tags -->
+
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="css/globalStyle.css" />
+
+    <!-- --~-- -->
+
+    <title>rytui's portfolio</title>
+
+    <!-- Loading Screen -->
+
+    <style>
+        #black {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #242f3f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            border: 4px solid #Fff;
+            animation: loader 2s infinite ease;
+        }
+        .loader-inner {
+            vertical-align: top;
+            display: inline-block;
+            width: 100%;
+            background-color: #fff;
+            animation: loader-inner 2s infinite ease-in;
+        }
+        
+        #abtme{
+            opacity: 1;
+        }
+
+        @keyframes loader {
+            0% { transform: rotate(0deg);}
+            25% { transform: rotate(180deg);}
+            50% { transform: rotate(180deg);}
+            75% { transform: rotate(360deg);}
+            100% { transform: rotate(360deg);}
+        }
+
+        @keyframes loader-inner {
+            0% { height: 0%;}
+            25% { height: 0%;}
+            50% { height: 100%;}
+            75% { height: 100%;}
+            100% { height: 0%;}
+        }
+
+        @keyframes abtme-loaded {
+            
+        }
+    </style>
+</head>
+<body>
+    <main id="main">
+        <header id="main-section-header">
+            <div id="header-text">
+                <h2 class="size-ten raleway-bold">Marek Zjeżdżałka</h2>
+                <h3 class="size-five raleway-light">your C++ programmer</h2>
+                <a href="#section-abtme" id="header-abtme-button" class="raleway-regular size-five">About me</a>
+            </div>
+            <img src="images/me.jpg" alt="Me" id="header-me-picture">
+        </header>
+    </main>
+
+    <!-- Loading Screen -->
+
+    <div id="black">
+        <span class="loader">
+            <span class="loader-inner"></span>
+        </span>
+    </div>
+
+    <!-- <script>
+        let mousePos = { x: undefined, y: undefined };
+        var height = document.body.clientHeight;
+        var width = document.body.clientWidth;
+        window.addEventListener('mousemove', (event) => {
+            mousePos = { x: event.clientX, y: event.clientY };
+            height2 = ((event.clientY)/height * 100);
+            width2 = ((event.clientX)/width * 100);
+            document.getElementById("background").style.backgroundPositionX = width2 + "%"; 
+            document.getElementById("background").style.backgroundPositionY = height2 + "%";
+        });
+    </script> -->
+
+    <style>
+        #black {
+            -webkit-animation: load-out 2s ease-in-out;
+            animation: load-out 2s ease-in-out;
+            -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+        }
+
+        @-webkit-keyframes load-out {
+            from {
+                background-color: rgba(0,0,0,1);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            to {
+                background-color: rgba(0,0,0,0);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        @keyframes load-out {
+            from {
+                background-color: rgba(0,0,0,1);
+                opacity: 1;
+                visibility: visible;
+            }
+
+            to {
+                background-color: rgba(0,0,0,0);
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</body>
+</html>
