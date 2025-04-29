@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="rytui's console portfolio">
+    <meta name="author" content="Marek Zjeżdżałka">
+    <title>Console Portfolio</title>
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;700&display=swap">
+    <style>
+        *{
+            margin: 0;
+        }
+        body {
+            background-color: #0D0C0D;
+            color: #eceeec;
+            font-family: 'Source Code Pro', monospace;
+        }
+        main{
+            display: flex;
+            justify-content: flex-start;
+            padding: 20px;
+            align-items: flex-end;
+            align-items: flex-end;
+            height: calc(100vh - 40px);
+            width: calc(100vw - 40px);
+            caret-shape: block;
+        }
+        .console {
+            max-height: 90vh;
+            display: flex;
+            height: auto;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-end;  
+            width: 100%;
+        }
+
+        /* Ensure output div takes full width */
+        #output {
+            width: 100%;
+            overflow-wrap: break-word;
+        }
+
+        #output > *{
+            margin-top: 3px;
+        }
+
+        #output > a {
+            color: #eceeec;
+            text-decoration: none;
+        }
+
+        .input-line {
+            display: flex;
+            margin-top: 3px;
+        }
+        .prompt {
+            color: #eceeec;
+            margin-right: 10px;
+        }
+        .blinking-cursor {
+            display: inline-block;
+            width: 8px;
+            height: 19px;
+            margin-left: 2px;
+            display:flex;
+            align-self: center;
+            background-color: #eceeec;
+            animation: blink 1s infinite ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .branch{
+            float:left;
+            height: 0.5em;
+            width: 10px;
+            margin-top: 2px;
+            margin-right: 5px;
+            border-left: 1px solid #eceeec;
+            border-bottom: 1px solid #eceeec;
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <div class="console">
+        <p>welcome to rytui's env. type 'help' for commands.</p>
+        <div id="output"></div>
+        <div class="input-line">
+            <span class="prompt" style="display: flex;">user@<p style="color: green;">portfolio</p>:~$</span>
+            <span id="input"></span>
+            <span class="blinking-cursor"></span>
+        </div>
+    </div>
+    </main>
+    
+    <script>
+        let input = "";
+        const arr = [];
+        let current = 0;
+
+        const branches = ["~", ["projects", ["project1.sh", "project2.sh", "project3.sh"]], ["contact", ["instagram.sh", "linkedin.sh", "github.sh"]]]
+        
+        document.addEventListener("keydown", function(event) {
+            if (event.key.length === 1) {
+                if(event.code == "Space") input += "&nbsp;";
+                else input += event.key;
+                document.getElementById("input").innerHTML = input;
+            } else if (event.key === "Backspace") {
+                input = input.slice(0, -1);
+                document.getElementById("input").textContent = input;
+            } else if (event.key === "ArrowUp") {
+                if (current > 0) {
+                    current--;
+                    document.getElementById("input").textContent = arr[current];
+                    input = arr[current];
+                }
+            } else if (event.key === "ArrowDown") {
+                if (current < arr.length - 1) {
+                    current++;
+                    document.getElementById("input").textContent = arr[current];
+                    input = arr[current];
+                }
+                else if(current == arr.length - 1){
+                    current++;
+                    document.getElementById("input").textContent = "";
+                    input = arr[current];
+                }
+            } else if (event.key === "Enter") {
+                
+                processCommand(input);
+                input!=""?arr.push(input):console.log(0);
+                document.getElementById("input").textContent = "";
+                current = arr.length;
+                input = "";
+            }
+        });
+        
+        function processCommand(cmd) {
+            let outputDiv = document.getElementById("output");
+            let response = "unknown cmd. type 'help' for a list of commands.";
+            console.log(cmd);
+            cmd = cmd.replaceAll("&nbsp;","");
+            console.log(cmd);
+            
+            if (cmd === "help") {
+                response = "available commands:\nabout - about me\nprojects - view my projects\ncontact - get in touch\nclear - clear screen";
+            } else if (cmd === "about") {
+                response = `<span style=''><p>i'm marek@</p><p style='color: green;'>rytui</p><p style="float:left">&nbsp;- 16-yo polish c++ programmer interested in competitive programming, video editing, coding languages, math, and aviation.</p></span>`;
+
+                outputDiv.innerHTML += `<span class="prompt" style="display: flex;">user@<p style="color: green;">portfolio</p>:~$ ${cmd}</span>${response.replace(/\n/g, "<br>")}`;
+            
+                // Scroll to the bottom automatically
+                let consoleDiv = document.querySelector(".console");
+                consoleDiv.scrollTop = consoleDiv.scrollHeight;
+                return;
+            } else if (cmd === "projects") {
+                response = `
+                projects:
+                <div class='branch'></div>zsk-plan-scraper
+                <div class='branch'></div>a
+                <div class='branch'></div>b
+                `;
+            } else if (cmd === "contact") {
+                response = `contact:
+                <div class='branch'></div>linkedin
+                <div class='branch'></div>instagram
+                <div class='branch'></div>github`;
+            } else if (cmd === "clear") {
+                outputDiv.innerHTML = "";
+                return;
+            }
+
+            outputDiv.innerHTML += `<span class="prompt" style="display: flex;">user@<p style="color: green;">portfolio</p>:~$ ${cmd}</span><p>${response.replace(/\n/g, "<br>")}</p>`;
+            
+            // Scroll to the bottom automatically
+            let consoleDiv = document.querySelector(".console");
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+
+    </script>
+</body>
+</html>
